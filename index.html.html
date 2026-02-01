@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luna 💘 Valentine</title>
+
+<style>
+  body{margin:0;height:100vh;background:linear-gradient(135deg,#ffd6e7,#ffeef5);display:flex;justify-content:center;align-items:center;font-family:Arial,sans-serif}
+  .card{background:#fff;width:360px;padding:28px;border-radius:22px;text-align:center;box-shadow:0 18px 35px rgba(0,0,0,.18);position:relative}
+  h1{font-size:22px}
+  .buttons{margin-top:20px;position:relative;height:60px}
+  button{padding:12px 22px;font-size:16px;border:none;border-radius:12px;cursor:pointer}
+  #yesBtn{background:#ff4d6d;color:#fff}
+  #noBtn{background:#ccc;position:absolute;right:0;top:0}
+  .no-dance{animation:wiggle .3s infinite}
+  @keyframes wiggle{0%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}100%{transform:rotate(-5deg)}}
+  .celebrate{display:none;margin-top:20px}
+  .photo{margin-top:15px;border-radius:16px;overflow:hidden}
+  .photo img{width:100%;display:block}
+</style>
+</head>
+
+<body>
+<div class="card">
+  <h1 id="question">Luna, will you be my Valentine? 💘</h1>
+
+  <div class="buttons" id="buttons">
+    <button id="yesBtn" onclick="yes()">YES 😍</button>
+    <button id="noBtn" class="no-dance">NO 😅</button>
+  </div>
+
+  <div class="celebrate" id="celebrate">
+    <h2>YAAAY!! 🎉💖</h2>
+    <p><b>Valentine date locked in 😘</b><br>
+    See you at Kyle G's Prime Seafood & Steaks at 7PM ✅</p>
+
+    <div class="photo">
+      <img src="luna.jpg" alt="Luna">
+    </div>
+  </div>
+</div>
+
+<script>
+  const noBtn = document.getElementById("noBtn");
+
+  function moveNo() {
+    const card = document.querySelector(".card");
+    const rect = card.getBoundingClientRect();
+    noBtn.style.left = Math.random() * (rect.width - 80) + "px";
+    noBtn.style.top  = Math.random() * (rect.height - 40) + "px";
+  }
+
+  noBtn.addEventListener("mouseenter", moveNo);
+  noBtn.addEventListener("touchstart", (e)=>{ e.preventDefault(); moveNo(); }, {passive:false});
+
+  function yes() {
+    document.getElementById("question").style.display = "none";
+    document.getElementById("buttons").style.display = "none";
+    document.getElementById("celebrate").style.display = "block";
+  }
+</script>
+</body>
+</html>
